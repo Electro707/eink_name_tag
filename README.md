@@ -1,6 +1,6 @@
-# E-Ink Label Project, by Electro707
+# E-Ink Name Tab Project, by Electro707
 
-This project is for a E-Ink label, meant to be the cooler replacement for a paper label for event and shows.
+This project is for a E-Ink name-tag, meant to be the cooler replacement for a paper name-tag for event and shows.
 
 ![image](20201116_014953.jpg)
 
