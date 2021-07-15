@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 24FC64F
+D 64K 1MHz I2C Serial EEPROM
+F https://ww1.microchip.com/downloads/en/DeviceDoc/22154B.pdf
+$ENDCMP
+#
+$CMP ER-EPD0213-1R
+D 2.13" 104x212 E-Ink Display w/ FPC Connector
+F https://www.buydisplay.com/download/manual/ER-EPD0213-1_Datasheet.pdf
+$ENDCMP
+#
+#End Doc Library

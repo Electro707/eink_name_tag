@@ -1,0 +1,1760 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "E-Paper Name Tag"
+Date "2020-10-26"
+Rev "B"
+Comp ""
+Comment1 "Jamal B. and Jake I."
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text GLabel 9350 1600 0    50   BiDi ~ 0
+GDR
+Text GLabel 9350 1700 0    50   BiDi ~ 0
+RESE
+Text GLabel 10650 1100 2    50   BiDi ~ 0
+BUSY
+Text GLabel 10650 1300 2    50   BiDi ~ 0
+CS1
+Text GLabel 10650 1600 2    50   BiDi ~ 0
+MOSI
+Text GLabel 9350 1300 0    50   BiDi ~ 0
+VDD
+Text GLabel 9350 1400 0    50   BiDi ~ 0
+VPP
+Text GLabel 9350 1900 0    50   BiDi ~ 0
+VSH1
+Text GLabel 9350 2300 0    50   BiDi ~ 0
+VGH
+Text GLabel 9350 2100 0    50   BiDi ~ 0
+VSL
+Text GLabel 9350 2400 0    50   BiDi ~ 0
+VGL
+Text GLabel 9350 2200 0    50   BiDi ~ 0
+VCOM
+Text GLabel 6750 1700 0    50   BiDi ~ 0
+GDR
+Text GLabel 7450 1950 2    50   BiDi ~ 0
+RESE
+Text GLabel 7550 4700 2    50   BiDi ~ 0
+VDD
+Text GLabel 7550 4500 2    50   BiDi ~ 0
+VSH1
+Text GLabel 6700 1400 0    50   BiDi ~ 0
+VGH
+Text GLabel 7550 4900 2    50   BiDi ~ 0
+VSL
+Text GLabel 6700 1000 0    50   BiDi ~ 0
+VGL
+Text GLabel 7500 5500 2    50   BiDi ~ 0
+VCOM
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C14
+U 1 1 5DEA96A7
+P 7350 1200
+F 0 "C14" H 7250 1300 50  0000 L CNN
+F 1 "1uf/25v" H 7350 1100 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7388 1050 50  0001 C CNN
+F 3 "~" H 7350 1200 50  0001 C CNN
+	1    7350 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C15
+U 1 1 5DEA9EE9
+P 8000 1200
+F 0 "C15" H 7900 1300 50  0000 L CNN
+F 1 "4.7uf/6.3v" H 8000 1100 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8038 1050 50  0001 C CNN
+F 3 "~" H 8000 1200 50  0001 C CNN
+	1    8000 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:L-Device-PCB-Test-rescue L1
+U 1 1 5DEAA4D7
+P 7700 1400
+F 0 "L1" V 7750 1550 50  0000 C CNN
+F 1 "47 uH" V 7650 1400 50  0000 C CNN
+F 2 "Inductor_SMD:L_Taiyo-Yuden_NR-60xx_HandSoldering" H 7700 1400 50  0001 C CNN
+F 3 "~" H 7700 1400 50  0001 C CNN
+	1    7700 1400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L PCB-Test-rescue:D_Schottky-Device-PCB-Test-rescue D2
+U 1 1 5DEABDDF
+P 6900 1400
+F 0 "D2" H 6900 1500 50  0000 C CNN
+F 1 "MBR0530" H 6900 1300 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-123" H 6900 1400 50  0001 C CNN
+F 3 "~" H 6900 1400 50  0001 C CNN
+	1    6900 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:D_Schottky-Device-PCB-Test-rescue D1
+U 1 1 5DEACB90
+P 6900 1000
+F 0 "D1" H 6900 1100 50  0000 C CNN
+F 1 "MBR0530" H 6900 875 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-123" H 6900 1000 50  0001 C CNN
+F 3 "~" H 6900 1000 50  0001 C CNN
+	1    6900 1000
+	-1   0    0    1   
+$EndComp
+$Comp
+L PCB-Test-rescue:D_Schottky-Device-PCB-Test-rescue D3
+U 1 1 5DEAD83D
+P 7700 1000
+F 0 "D3" H 7700 1100 50  0000 C CNN
+F 1 "MBR0530" H 7700 875 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-123" H 7700 1000 50  0001 C CNN
+F 3 "~" H 7700 1000 50  0001 C CNN
+	1    7700 1000
+	-1   0    0    1   
+$EndComp
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R11
+U 1 1 5DFB500C
+P 7350 2150
+F 0 "R11" H 7400 2000 50  0000 C CNN
+F 1 "2.2" V 7350 2150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 7280 2150 50  0001 C CNN
+F 3 "~" H 7350 2150 50  0001 C CNN
+	1    7350 2150
+	-1   0    0    1   
+$EndComp
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR023
+U 1 1 5DFB7F37
+P 7350 2400
+F 0 "#PWR023" H 7350 2150 50  0001 C CNN
+F 1 "GND" H 7355 2227 50  0000 C CNN
+F 2 "" H 7350 2400 50  0001 C CNN
+F 3 "" H 7350 2400 50  0001 C CNN
+	1    7350 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 1000 6750 1000
+Wire Wire Line
+	7350 1000 7350 1050
+Wire Wire Line
+	7350 1000 7550 1000
+Connection ~ 7350 1000
+Wire Wire Line
+	7850 1000 8000 1000
+Wire Wire Line
+	8000 1000 8000 1050
+Connection ~ 8000 1000
+Wire Wire Line
+	8000 1350 8000 1400
+Wire Wire Line
+	8000 1400 7850 1400
+Wire Wire Line
+	7550 1400 7350 1400
+Wire Wire Line
+	7350 1400 7350 1350
+Connection ~ 7350 1400
+Wire Wire Line
+	6750 1400 6700 1400
+Wire Wire Line
+	7350 1400 7350 1500
+Wire Wire Line
+	7050 1700 7000 1700
+Wire Wire Line
+	7000 1700 7000 2000
+Connection ~ 7000 1700
+Wire Wire Line
+	7350 1900 7350 1950
+Wire Wire Line
+	7350 2300 7350 2350
+Wire Wire Line
+	7350 1950 7450 1950
+Connection ~ 8000 1400
+$Comp
+L PCB-Test-rescue:SW_Push-Switch-PCB-Test-rescue SW1
+U 1 1 5DFE566D
+P 4850 5400
+F 0 "SW1" H 4850 5685 50  0000 C CNN
+F 1 "SW_Push" H 4850 5594 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx83-2LFS" H 4850 5600 50  0001 C CNN
+F 3 "~" H 4850 5600 50  0001 C CNN
+	1    4850 5400
+	1    0    0    -1  
+$EndComp
+Text GLabel 7550 4300 2    50   BiDi ~ 0
+VSH2
+Text GLabel 10650 1200 2    50   BiDi ~ 0
+DC#
+Text GLabel 10650 1000 2    50   BiDi ~ 0
+RES#
+Wire Wire Line
+	8000 1400 8100 1400
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R7
+U 1 1 5DFEDFBB
+P 5150 5150
+F 0 "R7" V 5100 5300 50  0000 C CNN
+F 1 "10k" V 5150 5150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5080 5150 50  0001 C CNN
+F 3 "~" H 5150 5150 50  0001 C CNN
+	1    5150 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 5300 5150 5400
+Wire Wire Line
+	5050 5400 5150 5400
+$Comp
+L PCB-Test-rescue:SW_Push-Switch-PCB-Test-rescue SW2
+U 1 1 5E33006B
+P 4850 5600
+F 0 "SW2" H 4850 5550 50  0000 C CNN
+F 1 "SW_Push" H 4850 5450 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx83-2LFS" H 4850 5800 50  0001 C CNN
+F 3 "~" H 4850 5800 50  0001 C CNN
+	1    4850 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR016
+U 1 1 5E330071
+P 4600 5700
+F 0 "#PWR016" H 4600 5450 50  0001 C CNN
+F 1 "GND" H 4605 5527 50  0000 C CNN
+F 2 "" H 4600 5700 50  0001 C CNN
+F 3 "" H 4600 5700 50  0001 C CNN
+	1    4600 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R8
+U 1 1 5E33AD54
+P 5300 5150
+F 0 "R8" V 5250 5300 50  0000 C CNN
+F 1 "10k" V 5300 5150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5230 5150 50  0001 C CNN
+F 3 "~" H 5300 5150 50  0001 C CNN
+	1    5300 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4650 5600 4600 5600
+Wire Wire Line
+	4650 5400 4600 5400
+$Comp
+L PCB-Test-rescue:Conn_01x06-Connector_Generic-PCB-Test-rescue J2
+U 1 1 5E396A88
+P 3625 7100
+F 0 "J2" H 3600 7400 50  0000 L CNN
+F 1 "Conn_01x06" V 3750 6850 50  0000 L CNN
+F 2 "Connector:Tag-Connect_TC2030-IDC-NL_2x03_P1.27mm_Vertical" H 3625 7100 50  0001 C CNN
+F 3 "~" H 3625 7100 50  0001 C CNN
+	1    3625 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR014
+U 1 1 5E39D716
+P 3375 7450
+F 0 "#PWR014" H 3375 7200 50  0001 C CNN
+F 1 "GND" H 3380 7277 50  0000 C CNN
+F 2 "" H 3375 7450 50  0001 C CNN
+F 3 "" H 3375 7450 50  0001 C CNN
+	1    3375 7450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3375 7450 3375 7400
+Wire Wire Line
+	3375 7400 3425 7400
+Wire Wire Line
+	3375 6850 3375 6900
+Wire Wire Line
+	3375 6900 3425 6900
+Text GLabel 3375 7000 0    50   Input ~ 0
+SWDIO
+Text GLabel 3375 7100 0    50   Input ~ 0
+SWCLK
+Wire Wire Line
+	3375 7000 3425 7000
+Wire Wire Line
+	3375 7100 3425 7100
+Text GLabel 3375 7200 0    50   Input ~ 0
+MC_REST
+Wire Wire Line
+	3375 7200 3425 7200
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R9
+U 1 1 5E4AD886
+P 5350 3750
+F 0 "R9" V 5250 3750 50  0000 C CNN
+F 1 "10k" V 5350 3750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5280 3750 50  0001 C CNN
+F 3 "~" H 5350 3750 50  0001 C CNN
+	1    5350 3750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5550 3750 5500 3750
+Wire Wire Line
+	5550 3750 5550 3800
+Wire Wire Line
+	5200 3750 5150 3750
+Wire Wire Line
+	5150 3750 5150 4000
+Wire Wire Line
+	5150 4000 5250 4000
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R6
+U 1 1 5E4DD655
+P 4850 4000
+F 0 "R6" V 4750 4000 50  0000 C CNN
+F 1 "100" V 4850 4000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 4780 4000 50  0001 C CNN
+F 3 "~" H 4850 4000 50  0001 C CNN
+	1    4850 4000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5000 4000 5150 4000
+Connection ~ 5150 4000
+Wire Wire Line
+	4600 4000 4700 4000
+Wire Wire Line
+	5400 4300 5550 4300
+Wire Wire Line
+	5550 4300 5550 4200
+NoConn ~ 3425 7300
+Text GLabel 10650 1500 2    50   BiDi ~ 0
+CLK
+$Comp
+L PCB-Test-rescue:Q_PMOS_GSD-Device-PCB-Test-rescue Q2
+U 1 1 5E0F3CB6
+P 5450 4000
+F 0 "Q2" H 5655 4046 50  0000 L CNN
+F 1 "Si2329DS" H 5655 3955 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 5650 4100 50  0001 C CNN
+F 3 "~" H 5450 4000 50  0001 C CNN
+	1    5450 4000
+	1    0    0    1   
+$EndComp
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR09
+U 1 1 5F064817
+P 2800 5700
+F 0 "#PWR09" H 2800 5450 50  0001 C CNN
+F 1 "GND" H 2805 5527 50  0000 C CNN
+F 2 "" H 2800 5700 50  0001 C CNN
+F 3 "" H 2800 5700 50  0001 C CNN
+	1    2800 5700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 5700 2800 5650
+Wire Wire Line
+	3000 3500 3000 3600
+Wire Wire Line
+	2900 3700 2900 3600
+Wire Wire Line
+	2900 3600 3000 3600
+Connection ~ 3000 3600
+Wire Wire Line
+	3000 3600 3000 3700
+$Comp
+L PCB-Test-rescue:USB_C_Receptacle_USB2.0-Connector-PCB-Test-rescue J1
+U 1 1 5F0EC43A
+P 1550 1600
+F 0 "J1" H 1657 2467 50  0000 C CNN
+F 1 "USB_C_Receptacle_USB2.0" H 1657 2376 50  0000 C CNN
+F 2 "Connector_USB:USB_C_Receptacle_GCT_USB4085" H 1700 1600 50  0001 C CNN
+F 3 "https://www.usb.org/sites/default/files/documents/usb_type-c.zip" H 1700 1600 50  0001 C CNN
+	1    1550 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR02
+U 1 1 5F11BBB8
+P 1000 7450
+F 0 "#PWR02" H 1000 7200 50  0001 C CNN
+F 1 "GND" H 1005 7277 50  0000 C CNN
+F 2 "" H 1000 7450 50  0001 C CNN
+F 3 "" H 1000 7450 50  0001 C CNN
+	1    1000 7450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1000 7200 1000 7400
+Wire Wire Line
+	1150 7200 1000 7200
+Wire Wire Line
+	1000 6900 1000 7000
+Wire Wire Line
+	1000 7000 1150 7000
+Text GLabel 1850 7000 2    50   Input ~ 0
+SDA
+Text GLabel 1850 7100 2    50   BiDi ~ 0
+SCL
+Wire Wire Line
+	1850 7000 1750 7000
+Wire Wire Line
+	1750 7100 1850 7100
+Wire Wire Line
+	1750 7200 1850 7200
+Wire Wire Line
+	1850 7200 1850 7400
+Wire Wire Line
+	1000 7400 1850 7400
+Connection ~ 1000 7400
+Wire Wire Line
+	1000 7400 1000 7450
+$Comp
+L PCB-Test-rescue:24FC64F-ProjectLibrary-PCB-Test-rescue-PCB-Test-rescue-PCB-Test-rescue U1
+U 1 1 5F274E1F
+P 1450 7100
+F 0 "U1" H 1450 7465 50  0000 C CNN
+F 1 "24FC64F" H 1450 7374 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 1450 7100 50  0001 C CNN
+F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/22154B.pdf" H 1450 7100 50  0001 C CNN
+	1    1450 7100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 1200 2150 1200
+Wire Wire Line
+	2250 1300 2150 1300
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR05
+U 1 1 5F43D9B9
+P 1550 2700
+F 0 "#PWR05" H 1550 2450 50  0001 C CNN
+F 1 "GND" H 1555 2527 50  0000 C CNN
+F 2 "" H 1550 2700 50  0001 C CNN
+F 3 "" H 1550 2700 50  0001 C CNN
+	1    1550 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2300 900  2300 1000
+Wire Wire Line
+	2300 1000 2150 1000
+$Comp
+L PCB-Test-rescue:MIC5366-3.3YC5-Regulator_Linear-PCB-Test-rescue U4
+U 1 1 5F4AB4C4
+P 6250 7050
+F 0 "U4" H 6250 7417 50  0000 C CNN
+F 1 "MIC5366-3.3YC5" H 6250 7326 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5" H 6250 7400 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/mic5365.pdf" H 5950 7850 50  0001 C CNN
+	1    6250 7050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 6950 5850 6950
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR020
+U 1 1 5F4D7993
+P 6250 7450
+F 0 "#PWR020" H 6250 7200 50  0001 C CNN
+F 1 "GND" H 6255 7277 50  0000 C CNN
+F 2 "" H 6250 7450 50  0001 C CNN
+F 3 "" H 6250 7450 50  0001 C CNN
+	1    6250 7450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 7350 6250 7450
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR022
+U 1 1 5F502E9A
+P 6750 6850
+F 0 "#PWR022" H 6750 6700 50  0001 C CNN
+F 1 "+3.3V" H 6765 7023 50  0000 C CNN
+F 2 "" H 6750 6850 50  0001 C CNN
+F 3 "" H 6750 6850 50  0001 C CNN
+	1    6750 6850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6750 6850 6750 6950
+Wire Wire Line
+	6750 6950 6650 6950
+Wire Wire Line
+	5850 7150 5750 7150
+Wire Wire Line
+	5750 7150 5750 6950
+Connection ~ 5750 6950
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C2
+U 1 1 5F54FE30
+P 7250 3300
+F 0 "C2" V 7200 3350 50  0000 L CNN
+F 1 "1uF/10v" V 7200 3250 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 3150 50  0001 C CNN
+F 3 "~" H 7250 3300 50  0001 C CNN
+	1    7250 3300
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR026
+U 1 1 5F5E2148
+P 7550 3500
+F 0 "#PWR026" H 7550 3350 50  0001 C CNN
+F 1 "+3.3V" H 7550 3650 50  0000 C CNN
+F 2 "" H 7550 3500 50  0001 C CNN
+F 3 "" H 7550 3500 50  0001 C CNN
+	1    7550 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7550 3300 7400 3300
+Text GLabel 2250 1800 2    50   BiDi ~ 0
+USB-D+
+Text GLabel 2250 1600 2    50   BiDi ~ 0
+USB-D-
+Wire Wire Line
+	2250 1600 2200 1600
+Wire Wire Line
+	2150 1500 2200 1500
+Wire Wire Line
+	2200 1500 2200 1600
+Connection ~ 2200 1600
+Wire Wire Line
+	2200 1600 2150 1600
+Wire Wire Line
+	2150 1700 2200 1700
+Wire Wire Line
+	2200 1700 2200 1800
+Wire Wire Line
+	2200 1800 2250 1800
+Wire Wire Line
+	2150 1800 2200 1800
+Connection ~ 2200 1800
+NoConn ~ 2150 2100
+NoConn ~ 2150 2200
+NoConn ~ 1250 2500
+Text GLabel 3550 5100 2    50   BiDi ~ 0
+USB-D+
+Text GLabel 3550 5000 2    50   BiDi ~ 0
+USB-D-
+Wire Wire Line
+	3550 5100 3400 5100
+Wire Wire Line
+	3550 5000 3400 5000
+Text GLabel 3550 5200 2    50   Input ~ 0
+SWDIO
+Text GLabel 3550 5300 2    50   Input ~ 0
+SWCLK
+Text GLabel 2050 3900 0    50   Input ~ 0
+MC_REST
+Wire Wire Line
+	3550 5200 3400 5200
+Wire Wire Line
+	3400 5300 3550 5300
+Text GLabel 3550 4100 2    50   BiDi ~ 0
+BUSY
+Text GLabel 3550 4300 2    50   BiDi ~ 0
+CS1
+Text GLabel 3550 4600 2    50   BiDi ~ 0
+MOSI
+Text GLabel 3550 4200 2    50   BiDi ~ 0
+RES#
+Text GLabel 3550 4400 2    50   BiDi ~ 0
+CLK
+Text GLabel 2150 5400 0    50   Input ~ 0
+SDA
+Text GLabel 2150 5300 0    50   BiDi ~ 0
+SCL
+Text GLabel 3550 4700 2    50   BiDi ~ 0
+BT1
+Wire Wire Line
+	5050 5600 5300 5600
+Wire Wire Line
+	4600 5700 4600 5600
+Connection ~ 4600 5600
+Wire Wire Line
+	4600 5600 4600 5400
+$Comp
+L PCB-Test-rescue:STM32L052K6Tx-MCU_ST_STM32L0-PCB-Test-rescue U2
+U 1 1 5FA120A2
+P 2900 4600
+F 0 "U2" H 2450 5450 50  0000 C CNN
+F 1 "STM32L052K6Tx" H 3250 3650 50  0000 C CNN
+F 2 "Package_QFP:LQFP-32_7x7mm_P0.8mm" H 2400 3700 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00108217.pdf" H 2900 4600 50  0001 C CNN
+	1    2900 4600
+	1    0    0    -1  
+$EndComp
+Text GLabel 3550 4800 2    50   BiDi ~ 0
+BT2
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR018
+U 1 1 5F19F300
+P 5550 3600
+F 0 "#PWR018" H 5550 3450 50  0001 C CNN
+F 1 "+3.3V" H 5565 3773 50  0000 C CNN
+F 2 "" H 5550 3600 50  0001 C CNN
+F 3 "" H 5550 3600 50  0001 C CNN
+	1    5550 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 3600 5550 3750
+Connection ~ 5550 3750
+Text GLabel 5400 4300 0    50   Input ~ 0
+~LP~3.3V
+Text GLabel 4600 3850 1    50   Input ~ 0
+~LP~3.3V-CTRL
+Text GLabel 8100 1400 2    50   Input ~ 0
+~LP~3.3V
+Text GLabel 9350 1000 0    50   Input ~ 0
+~LP~3.3V
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR06
+U 1 1 5F243611
+P 2150 4200
+F 0 "#PWR06" H 2150 3950 50  0001 C CNN
+F 1 "GND" H 2155 4027 50  0000 C CNN
+F 2 "" H 2150 4200 50  0001 C CNN
+F 3 "" H 2150 4200 50  0001 C CNN
+	1    2150 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2300 4100 2150 4100
+Wire Wire Line
+	2150 4100 2150 4200
+Wire Wire Line
+	2800 3700 2800 3600
+Wire Wire Line
+	2800 3600 2900 3600
+Connection ~ 2900 3600
+Wire Wire Line
+	2050 3900 2300 3900
+Text GLabel 5450 5400 2    50   BiDi ~ 0
+BT1
+Text GLabel 5450 5600 2    50   BiDi ~ 0
+BT2
+Wire Wire Line
+	3400 4100 3550 4100
+Wire Wire Line
+	3400 4200 3550 4200
+Wire Wire Line
+	3400 4300 3550 4300
+Wire Wire Line
+	3400 4400 3550 4400
+Wire Wire Line
+	3400 4500 3550 4500
+Wire Wire Line
+	3400 4600 3550 4600
+Wire Wire Line
+	3550 4700 3400 4700
+Wire Wire Line
+	3400 4800 3550 4800
+Wire Wire Line
+	2150 5300 2300 5300
+Wire Wire Line
+	2300 5400 2150 5400
+Wire Wire Line
+	5150 4800 5150 4900
+Wire Wire Line
+	5150 4900 5300 4900
+Wire Wire Line
+	5300 4900 5300 5000
+Connection ~ 5150 4900
+Wire Wire Line
+	5150 4900 5150 5000
+Wire Wire Line
+	5450 5400 5150 5400
+Connection ~ 5150 5400
+Wire Wire Line
+	5450 5600 5300 5600
+Wire Wire Line
+	5300 5300 5300 5600
+Connection ~ 5300 5600
+$Comp
+L PCB-Test-rescue:TUSB320-Interface_USB-PCB-Test-rescue U3
+U 1 1 5F52899E
+P 3850 1700
+F 0 "U3" H 4250 2150 50  0000 C CNN
+F 1 "TUSB320" H 3500 1250 50  0000 C CNN
+F 2 "Package_DFN_QFN:Texas_X2QFN-12_1.6x1.6mm_P0.4mm" H 4050 1150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tusb320.pdf" H 3850 1700 50  0001 C CNN
+	1    3850 1700
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 2500 1550 2700
+Text GLabel 2250 1200 2    50   BiDi ~ 0
+CC1
+Text GLabel 2250 1300 2    50   BiDi ~ 0
+CC2
+Text GLabel 3150 1600 0    50   BiDi ~ 0
+CC1
+Text GLabel 3150 1700 0    50   BiDi ~ 0
+CC2
+Wire Wire Line
+	3150 1600 3250 1600
+Wire Wire Line
+	3250 1700 3150 1700
+$Comp
+L PCB-Test-rescue:VBUS-power-PCB-Test-rescue #PWR07
+U 1 1 5F2243CA
+P 2300 900
+F 0 "#PWR07" H 2300 750 50  0001 C CNN
+F 1 "VBUS" H 2315 1073 50  0000 C CNN
+F 2 "" H 2300 900 50  0001 C CNN
+F 3 "" H 2300 900 50  0001 C CNN
+	1    2300 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:VBUS-power-PCB-Test-rescue #PWR012
+U 1 1 5F225709
+P 3150 1300
+F 0 "#PWR012" H 3150 1150 50  0001 C CNN
+F 1 "VBUS" H 3165 1473 50  0000 C CNN
+F 2 "" H 3150 1300 50  0001 C CNN
+F 3 "" H 3150 1300 50  0001 C CNN
+	1    3150 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3150 1300 3150 1400
+Wire Wire Line
+	3150 1400 3250 1400
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR015
+U 1 1 5F24E71C
+P 3850 1100
+F 0 "#PWR015" H 3850 950 50  0001 C CNN
+F 1 "+3.3V" H 3865 1273 50  0000 C CNN
+F 2 "" H 3850 1100 50  0001 C CNN
+F 3 "" H 3850 1100 50  0001 C CNN
+	1    3850 1100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 1100 3850 1200
+Text GLabel 2400 7450 0    50   Input ~ 0
+SDA
+Text GLabel 2400 7350 0    50   BiDi ~ 0
+SCL
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R4
+U 1 1 5F29822B
+P 2650 7150
+F 0 "R4" V 2600 7300 50  0000 C CNN
+F 1 "4.7K" V 2650 7150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 2580 7150 50  0001 C CNN
+F 3 "~" H 2650 7150 50  0001 C CNN
+	1    2650 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR010
+U 1 1 5F2B2A68
+P 3000 3500
+F 0 "#PWR010" H 3000 3350 50  0001 C CNN
+F 1 "+3.3V" H 3015 3673 50  0000 C CNN
+F 2 "" H 3000 3500 50  0001 C CNN
+F 3 "" H 3000 3500 50  0001 C CNN
+	1    3000 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR017
+U 1 1 5F2BF9BB
+P 5150 4800
+F 0 "#PWR017" H 5150 4650 50  0001 C CNN
+F 1 "+3.3V" H 5165 4973 50  0000 C CNN
+F 2 "" H 5150 4800 50  0001 C CNN
+F 3 "" H 5150 4800 50  0001 C CNN
+	1    5150 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2650 6900 2650 6950
+Wire Wire Line
+	2800 7000 2800 6950
+Wire Wire Line
+	2800 6950 2650 6950
+Connection ~ 2650 6950
+Wire Wire Line
+	2650 6950 2650 7000
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R5
+U 1 1 5F31DF8B
+P 2800 7150
+F 0 "R5" V 2750 7300 50  0000 C CNN
+F 1 "4.7K" V 2800 7150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 2730 7150 50  0001 C CNN
+F 3 "~" H 2800 7150 50  0001 C CNN
+	1    2800 7150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 7300 2800 7450
+Wire Wire Line
+	2400 7450 2800 7450
+Wire Wire Line
+	2650 7350 2650 7300
+Wire Wire Line
+	2400 7350 2650 7350
+Wire Wire Line
+	3250 1900 3100 1900
+Wire Wire Line
+	3100 1900 3100 2000
+Wire Wire Line
+	3100 2000 3250 2000
+Wire Wire Line
+	3100 2000 3100 2300
+Wire Wire Line
+	3100 2300 3850 2300
+Wire Wire Line
+	3850 2300 3850 2200
+Connection ~ 3100 2000
+Wire Wire Line
+	4450 1900 4550 1900
+Wire Wire Line
+	4550 1900 4550 2300
+Wire Wire Line
+	4550 2300 3850 2300
+Connection ~ 3850 2300
+Text GLabel 4600 1600 2    50   BiDi ~ 0
+USB-~INT
+Text GLabel 4600 1700 2    50   BiDi ~ 0
+USB-ID
+Text GLabel 4600 1500 2    50   BiDi ~ 0
+SCL
+Text GLabel 4600 1400 2    50   Input ~ 0
+SDA
+Wire Wire Line
+	4450 1400 4600 1400
+Wire Wire Line
+	4450 1500 4600 1500
+Wire Wire Line
+	4600 1600 4450 1600
+Wire Wire Line
+	4450 1700 4600 1700
+$Comp
+L PCB-Test-rescue:VBUS-power-PCB-Test-rescue #PWR025
+U 1 1 5F24F547
+P 7550 3300
+F 0 "#PWR025" H 7550 3150 50  0001 C CNN
+F 1 "VBUS" H 7550 3450 50  0000 C CNN
+F 2 "" H 7550 3300 50  0001 C CNN
+F 3 "" H 7550 3300 50  0001 C CNN
+	1    7550 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR01
+U 1 1 5F29CB3E
+P 1000 6900
+F 0 "#PWR01" H 1000 6750 50  0001 C CNN
+F 1 "+3.3V" H 1015 7073 50  0000 C CNN
+F 2 "" H 1000 6900 50  0001 C CNN
+F 3 "" H 1000 6900 50  0001 C CNN
+	1    1000 6900
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR013
+U 1 1 5F2ABF56
+P 3375 6850
+F 0 "#PWR013" H 3375 6700 50  0001 C CNN
+F 1 "+3.3V" H 3390 7023 50  0000 C CNN
+F 2 "" H 3375 6850 50  0001 C CNN
+F 3 "" H 3375 6850 50  0001 C CNN
+	1    3375 6850
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:BQ24072RGT-Battery_Management-PCB-Test-rescue U6
+U 1 1 5F30BC22
+P 9550 4350
+F 0 "U6" H 9200 4900 50  0000 C CNN
+F 1 "BQ24072RGT" H 9850 3800 50  0000 C CNN
+F 2 "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm" H 9850 3800 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/bq24072.pdf" H 9850 4550 50  0001 C CNN
+	1    9550 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:VCC-power-PCB-Test-rescue #PWR034
+U 1 1 5F30CC94
+P 10200 3800
+F 0 "#PWR034" H 10200 3650 50  0001 C CNN
+F 1 "VCC" H 10215 3973 50  0000 C CNN
+F 2 "" H 10200 3800 50  0001 C CNN
+F 3 "" H 10200 3800 50  0001 C CNN
+	1    10200 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:+BATT-power-PCB-Test-rescue #PWR035
+U 1 1 5F33C2C7
+P 10250 4250
+F 0 "#PWR035" H 10250 4100 50  0001 C CNN
+F 1 "+BATT" V 10265 4378 50  0000 L CNN
+F 2 "" H 10250 4250 50  0001 C CNN
+F 3 "" H 10250 4250 50  0001 C CNN
+	1    10250 4250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	10200 3800 10200 3950
+Wire Wire Line
+	10200 3950 10050 3950
+Wire Wire Line
+	10250 4250 10050 4250
+$Comp
+L PCB-Test-rescue:VBUS-power-PCB-Test-rescue #PWR033
+U 1 1 5F35D2E5
+P 9550 3750
+F 0 "#PWR033" H 9550 3600 50  0001 C CNN
+F 1 "VBUS" H 9565 3923 50  0000 C CNN
+F 2 "" H 9550 3750 50  0001 C CNN
+F 3 "" H 9550 3750 50  0001 C CNN
+	1    9550 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:+BATT-power-PCB-Test-rescue #PWR028
+U 1 1 5F36DA7A
+P 8200 5750
+F 0 "#PWR028" H 8200 5600 50  0001 C CNN
+F 1 "+BATT" V 8215 5878 50  0000 L CNN
+F 2 "" H 8200 5750 50  0001 C CNN
+F 3 "" H 8200 5750 50  0001 C CNN
+	1    8200 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:+BATT-power-PCB-Test-rescue #PWR027
+U 1 1 5F2CCF02
+P 7550 3900
+F 0 "#PWR027" H 7550 3750 50  0001 C CNN
+F 1 "+BATT" H 7550 4050 50  0000 C CNN
+F 2 "" H 7550 3900 50  0001 C CNN
+F 3 "" H 7550 3900 50  0001 C CNN
+	1    7550 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R15
+U 1 1 5F2DF950
+P 8750 4750
+F 0 "R15" V 8700 4550 50  0000 L CNN
+F 1 "R" V 8750 4750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 8680 4750 50  0001 C CNN
+F 3 "~" H 8750 4750 50  0001 C CNN
+	1    8750 4750
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R14
+U 1 1 5F2E066B
+P 8750 4650
+F 0 "R14" V 8700 4450 50  0000 L CNN
+F 1 "R" V 8750 4650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 8680 4650 50  0001 C CNN
+F 3 "~" H 8750 4650 50  0001 C CNN
+	1    8750 4650
+	0    1    1    0   
+$EndComp
+Text GLabel 8950 4350 0    50   Input ~ 0
+CHR_EN1
+Text GLabel 8950 4450 0    50   Input ~ 0
+CHR_EN2
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R17
+U 1 1 5F312258
+P 10600 4750
+F 0 "R17" H 10600 4600 50  0000 L CNN
+F 1 "10K" V 10600 4750 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 10530 4750 50  0001 C CNN
+F 3 "~" H 10600 4750 50  0001 C CNN
+	1    10600 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10600 4600 10600 4450
+Wire Wire Line
+	10600 4900 10600 5050
+Wire Wire Line
+	10600 5050 9550 5050
+Wire Wire Line
+	9550 5050 9550 4950
+Connection ~ 9550 5050
+Text GLabel 10100 4600 2    50   Input ~ 0
+CHR_~PG
+Text GLabel 10100 4800 2    50   Input ~ 0
+CHR_~CHR
+Wire Wire Line
+	10100 4600 10050 4600
+Wire Wire Line
+	10050 4600 10050 4650
+Wire Wire Line
+	10050 4750 10050 4800
+Wire Wire Line
+	10050 4800 10100 4800
+Wire Wire Line
+	8450 5050 8450 4750
+Wire Wire Line
+	8450 4150 9050 4150
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R13
+U 1 1 5F3DDCEC
+P 8750 4250
+F 0 "R13" V 8800 4050 50  0000 L CNN
+F 1 "R" V 8750 4250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 8680 4250 50  0001 C CNN
+F 3 "~" H 8750 4250 50  0001 C CNN
+	1    8750 4250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8900 4250 9050 4250
+Wire Wire Line
+	8600 4250 8450 4250
+Connection ~ 8450 4250
+Wire Wire Line
+	8450 4250 8450 4150
+Wire Wire Line
+	8900 4650 9050 4650
+Wire Wire Line
+	8450 5050 9550 5050
+Wire Wire Line
+	9050 4750 8900 4750
+Wire Wire Line
+	8600 4750 8450 4750
+Connection ~ 8450 4750
+Wire Wire Line
+	8450 4750 8450 4650
+Wire Wire Line
+	8600 4650 8450 4650
+Connection ~ 8450 4650
+Wire Wire Line
+	8450 4650 8450 4250
+Wire Wire Line
+	9050 4350 8950 4350
+Wire Wire Line
+	8950 4450 9050 4450
+$Comp
+L PCB-Test-rescue:VCC-power-PCB-Test-rescue #PWR031
+U 1 1 5F483E82
+P 8950 3850
+F 0 "#PWR031" H 8950 3700 50  0001 C CNN
+F 1 "VCC" H 8965 4023 50  0000 C CNN
+F 2 "" H 8950 3850 50  0001 C CNN
+F 3 "" H 8950 3850 50  0001 C CNN
+	1    8950 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8950 3850 8950 3950
+Wire Wire Line
+	8950 3950 9050 3950
+Text GLabel 2150 5000 0    50   Input ~ 0
+CHR_EN1
+Text GLabel 2150 4800 0    50   Input ~ 0
+CHR_EN2
+Wire Wire Line
+	2150 5000 2300 5000
+Wire Wire Line
+	2300 4800 2150 4800
+Wire Wire Line
+	2900 5600 2900 5650
+Wire Wire Line
+	2900 5650 2800 5650
+Connection ~ 2800 5650
+Wire Wire Line
+	2800 5650 2800 5600
+$Comp
+L PCB-Test-rescue:BQ297xy-Battery_Management-PCB-Test-rescue U5
+U 1 1 5F583C84
+P 9450 5900
+F 0 "U5" H 9450 6267 50  0000 C CNN
+F 1 "BQ297xy" H 9450 6176 50  0000 C CNN
+F 2 "Package_SON:WSON-6_1.5x1.5mm_P0.5mm" H 9450 6250 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/bq2970.pdf" H 9200 6100 50  0001 C CNN
+	1    9450 5900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8200 5750 8200 5800
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R12
+U 1 1 5F68F374
+P 8450 5800
+F 0 "R12" V 8400 5950 50  0000 C CNN
+F 1 "330" V 8450 5800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 8380 5800 50  0001 C CNN
+F 3 "~" H 8450 5800 50  0001 C CNN
+	1    8450 5800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8300 5800 8200 5800
+Connection ~ 8200 5800
+Wire Wire Line
+	8600 5800 8750 5800
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C16
+U 1 1 5F6BB5A4
+P 8750 6000
+F 0 "C16" H 8750 6100 50  0000 L CNN
+F 1 "0.1uF/6.3v" H 8750 5900 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8788 5850 50  0001 C CNN
+F 3 "~" H 8750 6000 50  0001 C CNN
+	1    8750 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8750 5850 8750 5800
+Connection ~ 8750 5800
+Wire Wire Line
+	8750 5800 9050 5800
+Wire Wire Line
+	9450 6200 9450 6350
+Wire Wire Line
+	9450 6350 8750 6350
+Wire Wire Line
+	8750 6150 8750 6350
+Connection ~ 8750 6350
+Wire Wire Line
+	8750 6350 8200 6350
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R16
+U 1 1 5F714E50
+P 9950 5400
+F 0 "R16" V 9900 5550 50  0000 C CNN
+F 1 "2.2K" V 9950 5400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 9880 5400 50  0001 C CNN
+F 3 "~" H 9950 5400 50  0001 C CNN
+	1    9950 5400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9800 5400 8950 5400
+Wire Wire Line
+	8950 5400 8950 6000
+Wire Wire Line
+	8950 6000 9050 6000
+Wire Wire Line
+	9450 6350 9850 6350
+Connection ~ 9450 6350
+Wire Wire Line
+	10050 6050 10050 6000
+Wire Wire Line
+	10050 6000 9850 6000
+Wire Wire Line
+	10450 5800 9850 5800
+Wire Wire Line
+	10450 5800 10450 6050
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR037
+U 1 1 5F85C05B
+P 10950 6400
+F 0 "#PWR037" H 10950 6150 50  0001 C CNN
+F 1 "GND" H 10955 6227 50  0000 C CNN
+F 2 "" H 10950 6400 50  0001 C CNN
+F 3 "" H 10950 6400 50  0001 C CNN
+	1    10950 6400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10950 6400 10950 6350
+Wire Wire Line
+	10950 6350 10950 5400
+Wire Wire Line
+	10950 5400 10100 5400
+Connection ~ 10950 6350
+$Comp
+L PCB-Test-rescue:+BATT-power-PCB-Test-rescue #PWR03
+U 1 1 5F903B3E
+P 1300 4050
+F 0 "#PWR03" H 1300 3900 50  0001 C CNN
+F 1 "+BATT" V 1315 4178 50  0000 L CNN
+F 2 "" H 1300 4050 50  0001 C CNN
+F 3 "" H 1300 4050 50  0001 C CNN
+	1    1300 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R1
+U 1 1 5F91B7AB
+P 1300 4250
+F 0 "R1" V 1250 4400 50  0000 C CNN
+F 1 "10k" V 1300 4250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1230 4250 50  0001 C CNN
+F 3 "~" H 1300 4250 50  0001 C CNN
+	1    1300 4250
+	-1   0    0    1   
+$EndComp
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R2
+U 1 1 5F9321DC
+P 1300 4800
+F 0 "R2" H 1250 4650 50  0000 C CNN
+F 1 "10k" V 1300 4800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1230 4800 50  0001 C CNN
+F 3 "~" H 1300 4800 50  0001 C CNN
+	1    1300 4800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1300 4650 1300 4500
+Wire Wire Line
+	2300 4500 1300 4500
+Connection ~ 1300 4500
+Wire Wire Line
+	1300 4500 1300 4400
+Wire Wire Line
+	1300 4100 1300 4050
+Wire Wire Line
+	1300 4950 1300 5000
+Wire Wire Line
+	1600 4600 2300 4600
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR04
+U 1 1 5F9D719A
+P 1300 5400
+F 0 "#PWR04" H 1300 5150 50  0001 C CNN
+F 1 "GND" H 1305 5227 50  0000 C CNN
+F 2 "" H 1300 5400 50  0001 C CNN
+F 3 "" H 1300 5400 50  0001 C CNN
+	1    1300 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R3
+U 1 1 5F9EF69C
+P 1600 4800
+F 0 "R3" H 1600 4950 50  0000 L CNN
+F 1 "1K" V 1600 4800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1530 4800 50  0001 C CNN
+F 3 "~" H 1600 4800 50  0001 C CNN
+	1    1600 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 4650 1600 4600
+Wire Wire Line
+	1600 4950 1600 5200
+$Comp
+L PCB-Test-rescue:+3.3V-power-PCB-Test-rescue #PWR08
+U 1 1 5F2CCA4B
+P 2650 6900
+F 0 "#PWR08" H 2650 6750 50  0001 C CNN
+F 1 "+3.3V" H 2665 7073 50  0000 C CNN
+F 2 "" H 2650 6900 50  0001 C CNN
+F 3 "" H 2650 6900 50  0001 C CNN
+	1    2650 6900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 3850 4600 4000
+Wire Wire Line
+	5750 6850 5750 6950
+Wire Wire Line
+	10600 4450 10050 4450
+Text GLabel 9350 2000 0    50   BiDi ~ 0
+VSH2
+$Comp
+L PCB-Test-rescue:ER-EPD0213-1R-ProjectLibrary-PCB-Test-rescue D4
+U 1 1 5F2787A8
+P 10000 1800
+F 0 "D4" H 10000 2865 50  0000 C CNN
+F 1 "ER-EPD0213-1R" H 10000 2774 50  0000 C CNN
+F 2 "Custom:TE_2-1734839-4_1x24-1MP_P0.5mm_Horizontal-EINK" H 10000 1800 50  0001 C CNN
+F 3 "https://www.buydisplay.com/download/manual/ER-EPD0213-1_Datasheet.pdf" H 9900 1900 50  0001 C CNN
+	1    10000 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9450 1100 9500 1100
+Wire Wire Line
+	9500 1300 9350 1300
+Wire Wire Line
+	9350 1400 9500 1400
+Wire Wire Line
+	9500 1600 9350 1600
+Wire Wire Line
+	9350 1700 9500 1700
+Wire Wire Line
+	9500 1900 9350 1900
+Wire Wire Line
+	9350 2000 9500 2000
+Wire Wire Line
+	9500 2100 9350 2100
+Wire Wire Line
+	9350 2200 9500 2200
+Wire Wire Line
+	9500 2300 9350 2300
+Wire Wire Line
+	9350 2400 9500 2400
+Wire Wire Line
+	9500 2600 9400 2600
+Wire Wire Line
+	10650 2100 10500 2100
+Wire Wire Line
+	10650 1500 10500 1500
+Wire Wire Line
+	10500 1600 10650 1600
+Wire Wire Line
+	10650 1200 10500 1200
+Wire Wire Line
+	10500 1300 10650 1300
+Wire Wire Line
+	10650 1000 10500 1000
+Wire Wire Line
+	10500 1100 10650 1100
+NoConn ~ 10500 1800
+NoConn ~ 10500 1900
+NoConn ~ 10500 2500
+NoConn ~ 10500 2600
+Wire Wire Line
+	9350 1000 9450 1000
+Wire Wire Line
+	9450 1100 9450 1000
+Connection ~ 9450 1000
+Wire Wire Line
+	9450 1000 9500 1000
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR032
+U 1 1 5F4C7AF2
+P 9400 2700
+F 0 "#PWR032" H 9400 2450 50  0001 C CNN
+F 1 "GND" H 9405 2527 50  0000 C CNN
+F 2 "" H 9400 2700 50  0001 C CNN
+F 3 "" H 9400 2700 50  0001 C CNN
+	1    9400 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9400 2700 9400 2600
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR036
+U 1 1 5F50C33E
+P 10650 2200
+F 0 "#PWR036" H 10650 1950 50  0001 C CNN
+F 1 "GND" H 10655 2027 50  0000 C CNN
+F 2 "" H 10650 2200 50  0001 C CNN
+F 3 "" H 10650 2200 50  0001 C CNN
+	1    10650 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10650 2100 10650 2200
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR029
+U 1 1 5DFB77F7
+P 8250 1000
+F 0 "#PWR029" H 8250 750 50  0001 C CNN
+F 1 "GND" H 8255 827 50  0000 C CNN
+F 2 "" H 8250 1000 50  0001 C CNN
+F 3 "" H 8250 1000 50  0001 C CNN
+	1    8250 1000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 1000 8250 1000
+Connection ~ 7350 1950
+Wire Wire Line
+	7350 1950 7350 2000
+$Comp
+L PCB-Test-rescue:R-Device-PCB-Test-rescue R10
+U 1 1 5DEAACDE
+P 7000 2150
+F 0 "R10" H 7050 2000 50  0000 C CNN
+F 1 "10k" V 7000 2150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6930 2150 50  0001 C CNN
+F 3 "~" H 7000 2150 50  0001 C CNN
+	1    7000 2150
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6750 1700 7000 1700
+Wire Wire Line
+	7350 2350 7000 2350
+Wire Wire Line
+	7000 2350 7000 2300
+Connection ~ 7350 2350
+Wire Wire Line
+	7350 2350 7350 2400
+Text GLabel 7550 4100 2    50   Input ~ 0
+~LP~3.3V
+Wire Wire Line
+	7400 3900 7550 3900
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR021
+U 1 1 5E046FCB
+P 6700 5650
+F 0 "#PWR021" H 6700 5400 50  0001 C CNN
+F 1 "GND" H 6705 5477 50  0000 C CNN
+F 2 "" H 6700 5650 50  0001 C CNN
+F 3 "" H 6700 5650 50  0001 C CNN
+	1    6700 5650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7400 3500 7550 3500
+Wire Wire Line
+	7550 3500 7550 3700
+Wire Wire Line
+	7550 3700 7400 3700
+Connection ~ 7550 3500
+Wire Wire Line
+	7550 4100 7400 4100
+Wire Wire Line
+	7550 4300 7400 4300
+Wire Wire Line
+	7550 4700 7400 4700
+Wire Wire Line
+	7550 4500 7400 4500
+Wire Wire Line
+	7550 4900 7400 4900
+Wire Wire Line
+	7400 5500 7500 5500
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C3
+U 1 1 5FBB4C52
+P 7250 3500
+F 0 "C3" V 7200 3550 50  0000 L CNN
+F 1 "1uF/6.3v" V 7200 3450 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 3350 50  0001 C CNN
+F 3 "~" H 7250 3500 50  0001 C CNN
+	1    7250 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C4
+U 1 1 5FBC4F18
+P 7250 3700
+F 0 "C4" V 7200 3750 50  0000 L CNN
+F 1 "0.1uF/6.3v" V 7200 3650 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 3550 50  0001 C CNN
+F 3 "~" H 7250 3700 50  0001 C CNN
+	1    7250 3700
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C6
+U 1 1 5FBD5416
+P 7250 4100
+F 0 "C6" V 7200 4150 50  0000 L CNN
+F 1 "1uF/6.3v" V 7200 4050 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 3950 50  0001 C CNN
+F 3 "~" H 7250 4100 50  0001 C CNN
+	1    7250 4100
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C7
+U 1 1 5FBD541C
+P 7250 4300
+F 0 "C7" V 7200 4350 50  0000 L CNN
+F 1 "1uF/25v" V 7200 4250 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 4150 50  0001 C CNN
+F 3 "~" H 7250 4300 50  0001 C CNN
+	1    7250 4300
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C9
+U 1 1 5FBD5422
+P 7250 4700
+F 0 "C9" V 7200 4750 50  0000 L CNN
+F 1 "1uF/10v" V 7200 4650 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 4550 50  0001 C CNN
+F 3 "~" H 7250 4700 50  0001 C CNN
+	1    7250 4700
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C8
+U 1 1 5FBE5A1E
+P 7250 4500
+F 0 "C8" V 7200 4550 50  0000 L CNN
+F 1 "1uF/25v" V 7200 4450 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 4350 50  0001 C CNN
+F 3 "~" H 7250 4500 50  0001 C CNN
+	1    7250 4500
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C10
+U 1 1 5FBE5A2A
+P 7250 4900
+F 0 "C10" V 7200 4950 50  0000 L CNN
+F 1 "1uF/25v" V 7200 4850 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 4750 50  0001 C CNN
+F 3 "~" H 7250 4900 50  0001 C CNN
+	1    7250 4900
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C13
+U 1 1 5FBF650A
+P 7250 5500
+F 0 "C13" V 7200 5550 50  0000 L CNN
+F 1 "0.47uF/25v" V 7200 5450 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 5350 50  0001 C CNN
+F 3 "~" H 7250 5500 50  0001 C CNN
+	1    7250 5500
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C5
+U 1 1 5FBC4F1E
+P 7250 3900
+F 0 "C5" V 7200 3950 50  0000 L CNN
+F 1 "1uF/6.3v" V 7200 3850 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 3750 50  0001 C CNN
+F 3 "~" H 7250 3900 50  0001 C CNN
+	1    7250 3900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7050 1000 7350 1000
+Wire Wire Line
+	7050 1400 7350 1400
+Text GLabel 7550 5100 2    50   BiDi ~ 0
+VGH
+Text GLabel 7550 5300 2    50   BiDi ~ 0
+VGL
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C11
+U 1 1 5FD1A01B
+P 7250 5100
+F 0 "C11" V 7200 5150 50  0000 L CNN
+F 1 "1uF/25v" V 7200 5050 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 4950 50  0001 C CNN
+F 3 "~" H 7250 5100 50  0001 C CNN
+	1    7250 5100
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C12
+U 1 1 5FD87224
+P 7250 5300
+F 0 "C12" V 7200 5350 50  0000 L CNN
+F 1 "1uF/25v" V 7200 5250 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7288 5150 50  0001 C CNN
+F 3 "~" H 7250 5300 50  0001 C CNN
+	1    7250 5300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7550 5100 7400 5100
+Wire Wire Line
+	7550 5300 7400 5300
+Wire Wire Line
+	6700 5650 6700 5500
+Wire Wire Line
+	6700 5500 7100 5500
+Wire Wire Line
+	7100 5300 6700 5300
+Wire Wire Line
+	6700 5300 6700 5500
+Connection ~ 6700 5500
+Wire Wire Line
+	7100 5100 6700 5100
+Wire Wire Line
+	6700 5100 6700 5300
+Wire Wire Line
+	7100 4900 6700 4900
+Wire Wire Line
+	6700 4900 6700 5100
+Wire Wire Line
+	7100 4700 6700 4700
+Wire Wire Line
+	6700 4700 6700 4900
+Wire Wire Line
+	7100 4500 6700 4500
+Wire Wire Line
+	6700 4500 6700 4700
+Wire Wire Line
+	7100 4300 6700 4300
+Wire Wire Line
+	6700 4300 6700 4500
+Wire Wire Line
+	7100 4100 6700 4100
+Wire Wire Line
+	6700 4100 6700 4300
+Wire Wire Line
+	7100 3900 6700 3900
+Wire Wire Line
+	6700 3900 6700 4100
+Wire Wire Line
+	7100 3700 6700 3700
+Wire Wire Line
+	6700 3700 6700 3900
+Wire Wire Line
+	7100 3500 6700 3500
+Wire Wire Line
+	6700 3500 6700 3700
+Wire Wire Line
+	7100 3300 6700 3300
+Wire Wire Line
+	6700 3300 6700 3500
+Connection ~ 6700 3500
+Connection ~ 6700 3700
+Connection ~ 6700 3900
+Connection ~ 6700 4100
+Connection ~ 6700 4300
+Connection ~ 6700 4500
+Connection ~ 6700 4700
+Connection ~ 6700 4900
+Connection ~ 6700 5100
+Connection ~ 6700 5300
+$Comp
+L PCB-Test-rescue:DMN2056U-Transistor_FET-PCB-Test-rescue Q1
+U 1 1 5F25B058
+P 1400 5200
+F 0 "Q1" H 1605 5246 50  0000 L CNN
+F 1 "DMN2056U" H 1605 5155 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 1600 5125 50  0001 L CIN
+F 3 "http://www.diodes.com/assets/Datasheets/DMN2056U.pdf" H 1400 5200 50  0001 L CNN
+	1    1400 5200
+	-1   0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:DMN2056U-Transistor_FET-PCB-Test-rescue Q3
+U 1 1 5F28A814
+P 7250 1700
+F 0 "Q3" H 7455 1746 50  0000 L CNN
+F 1 "DMN2056U" H 7455 1655 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7450 1625 50  0001 L CIN
+F 3 "http://www.diodes.com/assets/Datasheets/DMN2056U.pdf" H 7250 1700 50  0001 L CNN
+	1    7250 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:DMG9926UDM-Git_Add_Transistor_Fet-PCB-Test-rescue-PCB-Test-rescue Q4
+U 1 1 5F283252
+P 10250 6350
+F 0 "Q4" V 10400 6400 50  0000 L CNN
+F 1 "DMG9926UDM" V 10400 5450 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-6" H 10350 6425 50  0001 L CIN
+F 3 "https://www.diodes.com/assets/Datasheets/ds31770.pdf" H 10150 6350 50  0001 L CNN
+	1    10250 6350
+	0    1    1    0   
+$EndComp
+$Comp
+L PCB-Test-rescue:Conn_01x02_Male-Connector-PCB-Test-rescue J3
+U 1 1 5F33511B
+P 8000 6100
+F 0 "J3" H 7973 5982 50  0000 R CNN
+F 1 "BATT" H 7973 6073 50  0000 R CNN
+F 2 "Connector_JST:JST_PH_B2B-PH-SM4-TB_1x02-1MP_P2.00mm_Vertical" H 8000 6100 50  0001 C CNN
+F 3 "~" H 8000 6100 50  0001 C CNN
+	1    8000 6100
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	8200 5800 8200 6000
+Wire Wire Line
+	8200 6100 8200 6350
+$Comp
+L PCB-Test-rescue:GND-power-PCB-Test-rescue #PWR030
+U 1 1 5F44437C
+P 8450 5100
+F 0 "#PWR030" H 8450 4850 50  0001 C CNN
+F 1 "GND" H 8455 4927 50  0000 C CNN
+F 2 "" H 8450 5100 50  0001 C CNN
+F 3 "" H 8450 5100 50  0001 C CNN
+	1    8450 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 5100 8450 5050
+Connection ~ 8450 5050
+Wire Wire Line
+	10650 6350 10950 6350
+NoConn ~ 10250 6450
+Text GLabel 3550 4500 2    50   BiDi ~ 0
+DC#
+Wire Wire Line
+	3500 5500 3600 5500
+Wire Wire Line
+	3500 5400 3500 5500
+Wire Wire Line
+	3400 5400 3500 5400
+Text GLabel 3600 5500 2    50   Input ~ 0
+CHR_~PG
+Wire Wire Line
+	3550 3900 3400 3900
+Text GLabel 3550 3900 2    50   Input ~ 0
+~LP~3.3V-CTRL
+Wire Wire Line
+	2100 4900 2300 4900
+Text GLabel 2100 4900 0    50   Input ~ 0
+CHR_~CHR
+$Comp
+L power:GND #PWR011
+U 1 1 5F6EC59B
+P 3100 2400
+F 0 "#PWR011" H 3100 2150 50  0001 C CNN
+F 1 "GND" H 3105 2227 50  0000 C CNN
+F 2 "" H 3100 2400 50  0001 C CNN
+F 3 "" H 3100 2400 50  0001 C CNN
+	1    3100 2400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 2400 3100 2300
+Connection ~ 3100 2300
+$Comp
+L PCB-Test-rescue:VCC-power-PCB-Test-rescue #PWR019
+U 1 1 5F982E35
+P 5750 6850
+F 0 "#PWR019" H 5750 6700 50  0001 C CNN
+F 1 "VCC" H 5765 7023 50  0000 C CNN
+F 2 "" H 5750 6850 50  0001 C CNN
+F 3 "" H 5750 6850 50  0001 C CNN
+	1    5750 6850
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:VCC-power-PCB-Test-rescue #PWR024
+U 1 1 5F9A12DE
+P 7550 3000
+F 0 "#PWR024" H 7550 2850 50  0001 C CNN
+F 1 "VCC" H 7565 3173 50  0000 C CNN
+F 2 "" H 7550 3000 50  0001 C CNN
+F 3 "" H 7550 3000 50  0001 C CNN
+	1    7550 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L PCB-Test-rescue:C-Device-PCB-Test-rescue C1
+U 1 1 5F9B4BB8
+P 7250 3100
+F 0 "C1" V 7200 3150 50  0000 L CNN
+F 1 "1uF/10v" V 7200 3050 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 7288 2950 50  0001 C CNN
+F 3 "~" H 7250 3100 50  0001 C CNN
+	1    7250 3100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7100 3100 6700 3100
+Wire Wire Line
+	6700 3100 6700 3300
+Connection ~ 6700 3300
+Wire Wire Line
+	7400 3100 7550 3100
+Wire Wire Line
+	7550 3100 7550 3000
+$EndSCHEMATC

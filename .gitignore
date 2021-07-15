@@ -1,0 +1,13 @@
+*.png 
+*/.idea
+*/__pycache__
+*.gbr
+*.drl
+*.zip
+*-bak
+*/fp-info-cache
+
+STM32CubeIDE/*/Debug
+.settings
+.metadata
+*.launch
