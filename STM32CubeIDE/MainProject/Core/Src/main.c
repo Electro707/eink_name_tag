@@ -48,6 +48,14 @@ uint8_t handle_main_loop = 0;
 void handle_usb_packet(void);
 void handle_usb_extra_data(void);
 void display_frame_number(uint8_t frame_number);
+
+enum USB_ASKING_FOR {
+	enum_usb_askingfor_section_data = 1,
+};
+enum MAIN_LOOP_TODO {
+	enum_main_todo_got_rx_data = 1,
+	enum_main_todo_display_frame = 2,
+};
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -132,13 +140,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(handle_loop_extra_stuff == 1){
+	  if(handle_loop_extra_stuff == enum_main_todo_got_rx_data){
+		  // Handle when this devices received the number of raw bytes (non-command) that is expected.
+		  // Used for example when the PC wants to update a frame's section data
 		  NVIC_DisableIRQ(USB_IRQn);
 		  handle_usb_extra_data();
 		  NVIC_EnableIRQ(USB_IRQn);
 		  handle_loop_extra_stuff = 0;
 	  }
-	  else if(handle_loop_extra_stuff == 2){
+	  else if(handle_loop_extra_stuff == enum_main_todo_display_frame){
+		  // Handles when we want to display a certain frame on the display
 		  NVIC_DisableIRQ(USB_IRQn);
 		  display_frame_number(ee_write_frame);
 		  NVIC_EnableIRQ(USB_IRQn);
@@ -146,6 +157,7 @@ int main(void)
 	  }
 
 	  if(handle_main_loop == 1){
+		  // If we have USB data to handle, handle it.
 		  NVIC_DisableIRQ(USB_IRQn);
 		  handle_usb_packet();
 		  NVIC_EnableIRQ(USB_IRQn);
@@ -497,35 +509,48 @@ void display_frame_number(uint8_t frame_number){
 void handle_usb_packet(){
 	uint8_t frame, section;
 	uint16_t start_address;
-	if(UserRxBufferFS[0] == 0x02){
+	if(UserRxBufferFS[0] == 0x02){ // Command to start writing a frame section to the EEPROM
+		// Get the frame number and section in the frame to write into
 		ee_write_frame = UserRxBufferFS[1];
 		ee_write_section = UserRxBufferFS[2];
-		usb_asking_for = 1;
+		// Set internal flag what data is going to be sent and it's expected lenght
+		usb_asking_for = enum_usb_askingfor_section_data;
 		usb_asking_numb_data = SECTION_SIZE;
+		// Reply an ACK back to the device
 		UserTxBufferFS[0] = 0xFE; UserTxBufferFS[1] = '\n';
 		CDC_Transmit_FS(UserTxBufferFS, 2);
 	}
-	else if(UserRxBufferFS[0] == 0x03){
+	else if(UserRxBufferFS[0] == 0x03){		// Command to read a frame section from the EEPROM
+		// Get the frame and section in the frame to read from
 		frame = UserRxBufferFS[1];
 		section = UserRxBufferFS[2];
-		start_address = (frame*2816) + (section*SECTION_SIZE);
+		// Get the start address of the frame
+		start_address = (frame*2816) + (section*SECTION_SIZE) + 32;
+		// Set 0 to the TX buffer in case it had stuff in it beforehand
 		memset(&UserTxBufferFS[0], 0, SECTION_SIZE);
+		// Read the requested frame's section from EEPROM into the TX buffer
 		ee24fc64_multi_read_read(&UserTxBufferFS[0], SECTION_SIZE, start_address);
+		// Send the read buffer to the user
 		CDC_Transmit_FS(UserTxBufferFS, SECTION_SIZE);
-	} else if(UserRxBufferFS[0] == 'v'){
+	} else if(UserRxBufferFS[0] == 'v'){		// Command to get a string version
 		CDC_Transmit_FS(version_string, sizeof(version_string)-1);
 	}
-	else if(UserRxBufferFS[0] == 0x20){
+	else if(UserRxBufferFS[0] == 0x20){		// Command to display a certain frame number
+		// Get the frame to set to, and set the internal main loop flag
 		ee_write_frame = UserRxBufferFS[1];
-		handle_loop_extra_stuff = 2;
+		handle_loop_extra_stuff = enum_main_todo_display_frame;
 	}
+	else if(UserRxBufferFS[0] == 0x30){ 	// Command to get some info about the device, including the number of frames
+
+	}
+
 }
 
 void handle_usb_extra_data(){
 	uint32_t crc; uint16_t start_address;
-	if(usb_asking_for == 1){
+	if(usb_asking_for == enum_usb_askingfor_section_data){
 		LL_CRC_SetInitialData(CRC, 0);
-		start_address = (ee_write_frame*2816) + (ee_write_section*SECTION_SIZE);
+		start_address = (ee_write_frame*2816) + (ee_write_section*SECTION_SIZE) + 32;
 		for(int i=0;i<SECTION_SIZE/32;i++){
 			ee24fc64_multi_write(&UserRxBufferFS[(32*i)], 32, start_address);
 			for(int f=0;f<32;f++){LL_CRC_FeedData8(CRC, UserRxBufferFS[(32*i)+f]);}

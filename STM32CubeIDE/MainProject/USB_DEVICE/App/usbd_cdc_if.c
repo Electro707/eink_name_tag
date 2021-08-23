@@ -291,7 +291,7 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 	} else{
 		usb_asking_numb_data -= *Len;
 		if(usb_asking_numb_data <= 0){
-			handle_loop_extra_stuff = 1;
+			handle_loop_extra_stuff = enum_main_todo_got_rx_data;
 			read_fpos = 0;
 		}
 	}
