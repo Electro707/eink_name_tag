@@ -33,6 +33,7 @@
 #define SECTION_PER_FRAME 44
 
 uint8_t current_frame = 0;
+uint8_t max_frames = 0;
 uint8_t display_buffer[SECTION_SIZE*SECTION_PER_FRAME];
 uint8_t version_string[] = "Epaper V1\n";
 
@@ -49,13 +50,6 @@ void handle_usb_packet(void);
 void handle_usb_extra_data(void);
 void display_frame_number(uint8_t frame_number);
 
-enum USB_ASKING_FOR {
-	enum_usb_askingfor_section_data = 1,
-};
-enum MAIN_LOOP_TODO {
-	enum_main_todo_got_rx_data = 1,
-	enum_main_todo_display_frame = 2,
-};
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -132,8 +126,10 @@ int main(void)
 
   Paper_Init();
   Paper_Clear(); Paper_TurnOnDisplay();
-  	Paper_Sleep();
-  	DISPLAY_OFF;
+  Paper_Sleep();
+  DISPLAY_OFF;
+
+  max_frames = ee24fc64_byte_read(0x00);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -151,7 +147,7 @@ int main(void)
 	  else if(handle_loop_extra_stuff == enum_main_todo_display_frame){
 		  // Handles when we want to display a certain frame on the display
 		  NVIC_DisableIRQ(USB_IRQn);
-		  display_frame_number(ee_write_frame);
+		  display_frame_number(current_frame);
 		  NVIC_EnableIRQ(USB_IRQn);
 		  handle_loop_extra_stuff = 0;
 	  }
@@ -494,7 +490,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 void display_frame_number(uint8_t frame_number){
-	uint16_t start_address = frame_number*2816;
+	uint16_t start_address = (frame_number*SECTION_SIZE*SECTION_PER_FRAME) + 32;
 	for(int i=0;i<SECTION_PER_FRAME;i++){
 		ee24fc64_multi_read_read(&display_buffer[i*SECTION_SIZE], SECTION_SIZE, start_address);
 		start_address += SECTION_SIZE;
@@ -537,11 +533,18 @@ void handle_usb_packet(){
 	}
 	else if(UserRxBufferFS[0] == 0x20){		// Command to display a certain frame number
 		// Get the frame to set to, and set the internal main loop flag
-		ee_write_frame = UserRxBufferFS[1];
+		current_frame = UserRxBufferFS[1];
 		handle_loop_extra_stuff = enum_main_todo_display_frame;
 	}
 	else if(UserRxBufferFS[0] == 0x30){ 	// Command to get some info about the device, including the number of frames
-
+		max_frames = UserRxBufferFS[1];
+		ee24fc64_byte_write(max_frames, 0x00);
+		UserTxBufferFS[0] = 0xFE; UserTxBufferFS[1] = '\n';
+		CDC_Transmit_FS(UserTxBufferFS, 2);
+	}
+	else if(UserRxBufferFS[0] == 0x31){
+		UserTxBufferFS[0] = max_frames; UserTxBufferFS[1] = '\n';
+		CDC_Transmit_FS(UserTxBufferFS, 2);
 	}
 
 }

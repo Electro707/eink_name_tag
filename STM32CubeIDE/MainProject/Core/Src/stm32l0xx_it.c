@@ -153,14 +153,18 @@ void EXTI4_15_IRQHandler(void)
   {
     LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_8);
     /* USER CODE BEGIN LL_EXTI_LINE_8 */
-
+    if(++current_frame == max_frames){current_frame = 0;}
+    handle_loop_extra_stuff = enum_main_todo_display_frame;
+    LL_mDelay(10);
     /* USER CODE END LL_EXTI_LINE_8 */
   }
   if (LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_9) != RESET)
   {
     LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_9);
     /* USER CODE BEGIN LL_EXTI_LINE_9 */
-
+    if(current_frame == 0){current_frame = max_frames-1;}else{current_frame--;}
+	handle_loop_extra_stuff = enum_main_todo_display_frame;
+	LL_mDelay(10);
     /* USER CODE END LL_EXTI_LINE_9 */
   }
   /* USER CODE BEGIN EXTI4_15_IRQn 1 */

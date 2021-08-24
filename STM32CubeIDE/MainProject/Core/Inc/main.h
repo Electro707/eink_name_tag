@@ -48,6 +48,8 @@ extern "C" {
 extern int usb_asking_numb_data;
 extern uint8_t handle_loop_extra_stuff;
 extern uint8_t handle_main_loop;
+extern uint8_t current_frame;
+extern uint8_t max_frames;
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -62,7 +64,13 @@ extern uint8_t handle_main_loop;
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+enum USB_ASKING_FOR {
+	enum_usb_askingfor_section_data = 1,
+};
+enum MAIN_LOOP_TODO {
+	enum_main_todo_got_rx_data = 1,
+	enum_main_todo_display_frame = 2,
+};
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
