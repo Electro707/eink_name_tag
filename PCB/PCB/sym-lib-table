@@ -1,4 +1,4 @@
 (sym_lib_table
-  (lib (name "ProjectLibrary")(type "Legacy")(uri "${KIPRJMOD}/../SchLibrary/ProjectLibrary.lib")(options "")(descr ""))
-  (lib (name "PCB-Test-rescue")(type "Legacy")(uri "${KIPRJMOD}/PCB Test-rescue.lib")(options "")(descr ""))
+  (lib (name ProjectLibrary)(type Legacy)(uri ${KIPRJMOD}/SchLibrary/ProjectLibrary.lib)(options "")(descr ""))
+  (lib (name PCB-Test-rescue)(type Legacy)(uri "${KIPRJMOD}/PCB Test-rescue.lib")(options "")(descr ""))
 )

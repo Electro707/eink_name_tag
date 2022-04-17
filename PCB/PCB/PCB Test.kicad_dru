@@ -1,0 +1,4 @@
+(version 1)
+(rule USBCON
+(constraint clearance (min 5mil))
+(condition "A.insideCourtyard('J1')"))
