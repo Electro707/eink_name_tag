@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2022 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -33,9 +32,8 @@
 #define SECTION_PER_FRAME 44
 
 uint8_t current_frame = 0;
-uint8_t max_frames = 0;
 uint8_t display_buffer[SECTION_SIZE*SECTION_PER_FRAME];
-uint8_t version_string[] = "Epaper V1\n";
+uint8_t version_string[] = "Epaper Rev C\n";
 
 
 int usb_asking_numb_data = 0;
@@ -48,8 +46,6 @@ uint8_t handle_main_loop = 0;
 
 void handle_usb_packet(void);
 void handle_usb_extra_data(void);
-void display_frame_number(uint8_t frame_number);
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -75,9 +71,9 @@ void display_frame_number(uint8_t frame_number);
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_SPI1_Init(void);
 static void MX_CRC_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -115,50 +111,42 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_SPI1_Init();
   MX_CRC_Init();
   MX_I2C1_Init();
+  MX_SPI1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   DISPLAY_ON;
-
   LL_SPI_Enable(SPI1);
-
   Paper_Init();
   Paper_Clear(); Paper_TurnOnDisplay();
   Paper_Sleep();
   DISPLAY_OFF;
-
-  max_frames = ee24fc64_byte_read(0x00);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(handle_loop_extra_stuff == enum_main_todo_got_rx_data){
-		  // Handle when this devices received the number of raw bytes (non-command) that is expected.
-		  // Used for example when the PC wants to update a frame's section data
-		  NVIC_DisableIRQ(USB_IRQn);
-		  handle_usb_extra_data();
-		  NVIC_EnableIRQ(USB_IRQn);
-		  handle_loop_extra_stuff = 0;
-	  }
-	  else if(handle_loop_extra_stuff == enum_main_todo_display_frame){
-		  // Handles when we want to display a certain frame on the display
-		  NVIC_DisableIRQ(USB_IRQn);
-		  display_frame_number(current_frame);
-		  NVIC_EnableIRQ(USB_IRQn);
-		  handle_loop_extra_stuff = 0;
-	  }
+    if(handle_loop_extra_stuff == 1){
+	  NVIC_DisableIRQ(USB_IRQn);
+	  handle_usb_extra_data();
+	  NVIC_EnableIRQ(USB_IRQn);
+	  handle_loop_extra_stuff = 0;
+	}
+	else if(handle_loop_extra_stuff == 2){
+	  NVIC_DisableIRQ(USB_IRQn);
+	  display_frame_number(ee_write_frame);
+	  NVIC_EnableIRQ(USB_IRQn);
+	  handle_loop_extra_stuff = 0;
+	}
 
-	  if(handle_main_loop == 1){
-		  // If we have USB data to handle, handle it.
-		  NVIC_DisableIRQ(USB_IRQn);
-		  handle_usb_packet();
-		  NVIC_EnableIRQ(USB_IRQn);
-		  handle_main_loop = 0;
-	  }
+	if(handle_main_loop == 1){
+	  NVIC_DisableIRQ(USB_IRQn);
+	  handle_usb_packet();
+	  NVIC_EnableIRQ(USB_IRQn);
+	  handle_main_loop = 0;
+	}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -180,6 +168,7 @@ void SystemClock_Config(void)
   /** Configure the main internal regulator output voltage
   */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
@@ -195,6 +184,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -215,9 +205,11 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Enable the SYSCFG APB clock
   */
   __HAL_RCC_CRS_CLK_ENABLE();
+
   /** Configures CRS
   */
   RCC_CRSInitStruct.Prescaler = RCC_CRS_SYNC_DIV1;
@@ -284,7 +276,7 @@ static void MX_I2C1_Init(void)
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   GPIO_InitStruct.Alternate = LL_GPIO_AF_1;
   LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
@@ -292,7 +284,7 @@ static void MX_I2C1_Init(void)
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   GPIO_InitStruct.Alternate = LL_GPIO_AF_1;
   LL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
@@ -302,6 +294,7 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 1 */
 
   /* USER CODE END I2C1_Init 1 */
+
   /** I2C Initialization
   */
   LL_I2C_EnableAutoEndMode(I2C1);
@@ -482,15 +475,14 @@ static void MX_GPIO_Init(void)
   LL_EXTI_Init(&EXTI_InitStruct);
 
   /* EXTI interrupt init*/
-  NVIC_SetPriority(EXTI4_15_IRQn, 1);
+  NVIC_SetPriority(EXTI4_15_IRQn, 0);
   NVIC_EnableIRQ(EXTI4_15_IRQn);
 
 }
 
 /* USER CODE BEGIN 4 */
-
 void display_frame_number(uint8_t frame_number){
-	uint16_t start_address = (frame_number*SECTION_SIZE*SECTION_PER_FRAME) + 32;
+	uint16_t start_address = frame_number*2816;
 	for(int i=0;i<SECTION_PER_FRAME;i++){
 		ee24fc64_multi_read_read(&display_buffer[i*SECTION_SIZE], SECTION_SIZE, start_address);
 		start_address += SECTION_SIZE;
@@ -505,55 +497,35 @@ void display_frame_number(uint8_t frame_number){
 void handle_usb_packet(){
 	uint8_t frame, section;
 	uint16_t start_address;
-	if(UserRxBufferFS[0] == 0x02){ // Command to start writing a frame section to the EEPROM
-		// Get the frame number and section in the frame to write into
+	if(UserRxBufferFS[0] == 0x02){
 		ee_write_frame = UserRxBufferFS[1];
 		ee_write_section = UserRxBufferFS[2];
-		// Set internal flag what data is going to be sent and it's expected lenght
-		usb_asking_for = enum_usb_askingfor_section_data;
+		usb_asking_for = 1;
 		usb_asking_numb_data = SECTION_SIZE;
-		// Reply an ACK back to the device
 		UserTxBufferFS[0] = 0xFE; UserTxBufferFS[1] = '\n';
 		CDC_Transmit_FS(UserTxBufferFS, 2);
 	}
-	else if(UserRxBufferFS[0] == 0x03){		// Command to read a frame section from the EEPROM
-		// Get the frame and section in the frame to read from
+	else if(UserRxBufferFS[0] == 0x03){
 		frame = UserRxBufferFS[1];
 		section = UserRxBufferFS[2];
-		// Get the start address of the frame
-		start_address = (frame*2816) + (section*SECTION_SIZE) + 32;
-		// Set 0 to the TX buffer in case it had stuff in it beforehand
+		start_address = (frame*2816) + (section*SECTION_SIZE);
 		memset(&UserTxBufferFS[0], 0, SECTION_SIZE);
-		// Read the requested frame's section from EEPROM into the TX buffer
 		ee24fc64_multi_read_read(&UserTxBufferFS[0], SECTION_SIZE, start_address);
-		// Send the read buffer to the user
 		CDC_Transmit_FS(UserTxBufferFS, SECTION_SIZE);
-	} else if(UserRxBufferFS[0] == 'v'){		// Command to get a string version
+	} else if(UserRxBufferFS[0] == 'v'){
 		CDC_Transmit_FS(version_string, sizeof(version_string)-1);
 	}
-	else if(UserRxBufferFS[0] == 0x20){		// Command to display a certain frame number
-		// Get the frame to set to, and set the internal main loop flag
-		current_frame = UserRxBufferFS[1];
-		handle_loop_extra_stuff = enum_main_todo_display_frame;
+	else if(UserRxBufferFS[0] == 0x20){
+		ee_write_frame = UserRxBufferFS[1];
+		handle_loop_extra_stuff = 2;
 	}
-	else if(UserRxBufferFS[0] == 0x30){ 	// Command to get some info about the device, including the number of frames
-		max_frames = UserRxBufferFS[1];
-		ee24fc64_byte_write(max_frames, 0x00);
-		UserTxBufferFS[0] = 0xFE; UserTxBufferFS[1] = '\n';
-		CDC_Transmit_FS(UserTxBufferFS, 2);
-	}
-	else if(UserRxBufferFS[0] == 0x31){
-		UserTxBufferFS[0] = max_frames; UserTxBufferFS[1] = '\n';
-		CDC_Transmit_FS(UserTxBufferFS, 2);
-	}
-
 }
 
 void handle_usb_extra_data(){
 	uint32_t crc; uint16_t start_address;
-	if(usb_asking_for == enum_usb_askingfor_section_data){
+	if(usb_asking_for == 1){
 		LL_CRC_SetInitialData(CRC, 0);
-		start_address = (ee_write_frame*2816) + (ee_write_section*SECTION_SIZE) + 32;
+		start_address = (ee_write_frame*2816) + (ee_write_section*SECTION_SIZE);
 		for(int i=0;i<SECTION_SIZE/32;i++){
 			ee24fc64_multi_write(&UserRxBufferFS[(32*i)], 32, start_address);
 			for(int f=0;f<32;f++){LL_CRC_FeedData8(CRC, UserRxBufferFS[(32*i)+f]);}
@@ -567,7 +539,6 @@ void handle_usb_extra_data(){
 	usb_asking_for = 0;
 	usb_asking_numb_data = 0;
 }
-
 /* USER CODE END 4 */
 
 /**
@@ -601,5 +572,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -7,13 +7,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2022 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -166,7 +165,6 @@ static int8_t CDC_Init_FS(void)
 static int8_t CDC_DeInit_FS(void)
 {
   /* USER CODE BEGIN 4 */
-//	&hUsbDeviceFS = NULL;
   return (USBD_OK);
   /* USER CODE END 4 */
 }
@@ -274,29 +272,34 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
-	USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
-	  USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+//  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
+//  USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+//  return (USBD_OK);
 
-	read_fpos += *Len;
-	if(usb_asking_numb_data == 0){
-		// Check if we got a new-line character, meaning that we
-		// need to do something the command/message we go
-		for(int i=read_fpos-*Len; i<read_fpos;i++){
-			if(UserRxBufferFS[i] == '\n'){
-				handle_main_loop = 1;
+	USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
+		  USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+
+		read_fpos += *Len;
+		if(usb_asking_numb_data == 0){
+			// Check if we got a new-line character, meaning that we
+			// need to do something the command/message we go
+			for(int i=read_fpos-*Len; i<read_fpos;i++){
+				if(UserRxBufferFS[i] == '\n'){
+					handle_main_loop = 1;
+					read_fpos = 0;
+					break;
+				}
+			}
+		} else{
+			usb_asking_numb_data -= *Len;
+			if(usb_asking_numb_data <= 0){
+				handle_loop_extra_stuff = 1;
 				read_fpos = 0;
-				break;
 			}
 		}
-	} else{
-		usb_asking_numb_data -= *Len;
-		if(usb_asking_numb_data <= 0){
-			handle_loop_extra_stuff = enum_main_todo_got_rx_data;
-			read_fpos = 0;
-		}
-	}
 
-  return (USBD_OK);
+	  return (USBD_OK);
+
   /* USER CODE END 6 */
 }
 
@@ -336,5 +339,3 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
 /**
   * @}
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

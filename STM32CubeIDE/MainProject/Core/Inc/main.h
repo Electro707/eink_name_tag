@@ -7,13 +7,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2022 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -49,7 +48,6 @@ extern int usb_asking_numb_data;
 extern uint8_t handle_loop_extra_stuff;
 extern uint8_t handle_main_loop;
 extern uint8_t current_frame;
-extern uint8_t max_frames;
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -64,20 +62,14 @@ extern uint8_t max_frames;
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-enum USB_ASKING_FOR {
-	enum_usb_askingfor_section_data = 1,
-};
-enum MAIN_LOOP_TODO {
-	enum_main_todo_got_rx_data = 1,
-	enum_main_todo_display_frame = 2,
-};
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void display_frame_number(uint8_t frame_number);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -106,5 +98,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

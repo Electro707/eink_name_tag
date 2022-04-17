@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2022 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -65,7 +64,7 @@ extern PCD_HandleTypeDef hpcd_USB_FS;
 /*           Cortex-M0+ Processor Interruption and Exception Handlers          */
 /******************************************************************************/
 /**
-  * @brief This function handles Non maskable interrupt.
+  * @brief This function handles Non maskable Interrupt.
   */
 void NMI_Handler(void)
 {
@@ -153,18 +152,22 @@ void EXTI4_15_IRQHandler(void)
   {
     LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_8);
     /* USER CODE BEGIN LL_EXTI_LINE_8 */
-    if(++current_frame == max_frames){current_frame = 0;}
-    handle_loop_extra_stuff = enum_main_todo_display_frame;
-    LL_mDelay(10);
+    current_frame++;
+	if(current_frame == 3){
+		current_frame = 0;
+	}
+	display_frame_number(current_frame);
     /* USER CODE END LL_EXTI_LINE_8 */
   }
   if (LL_EXTI_IsActiveFlag_0_31(LL_EXTI_LINE_9) != RESET)
   {
     LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_9);
     /* USER CODE BEGIN LL_EXTI_LINE_9 */
-    if(current_frame == 0){current_frame = max_frames-1;}else{current_frame--;}
-	handle_loop_extra_stuff = enum_main_todo_display_frame;
-	LL_mDelay(10);
+    if (current_frame == 0){
+		current_frame = 3;
+	}
+	current_frame--;
+	display_frame_number(current_frame);
     /* USER CODE END LL_EXTI_LINE_9 */
   }
   /* USER CODE BEGIN EXTI4_15_IRQn 1 */
@@ -189,4 +192,3 @@ void USB_IRQHandler(void)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
