@@ -6,6 +6,7 @@ This project is for a E-Ink name-tag, meant to be the cooler replacement for a p
 
 ## Directory
 
-- `STM32CubeIDE`: The folder for the firmware
-- `PCB`: The KiCAD PCB files
-- `PythonUploader`: A python utility to upload frames to the display
+- `STM32CubeIDE`: The firmware created with STM32CubeIDE
+- `PCB`: PCB Files made with KiCAD
+- `PythonUploader`: A Python GUI and class to communicate with the e-ink tag, mainly to update the "frames"
+- `CAD`: Mechanical enclosure made with FreeCAD
