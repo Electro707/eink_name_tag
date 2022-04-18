@@ -51,8 +51,6 @@ class EpaperDevice:
     COMMAND_GET_FRAME_WITH_SECTION = [0x03]
     COMMAND_WRITE_FRAME_WITH_SECTION = [0x02]
     COMMAND_DISPLAY_FRAME = [0x20]
-    COMMAND_SET_NUMBER_OF_MAX_FRAMES = [0x30]
-    COMMAND_GET_NUMBER_OF_MAX_FRAMES = [0x31]
     # COMMAND_GET_FRAME_WITH_SECTION = b'r'
     SECTION_SIZE = 64
     NUMB_OF_SECTION_PER_FRAME = 44
@@ -77,10 +75,6 @@ class EpaperDevice:
         self.log.info('Connected to device')
         return True
 
-    def disconnect(self):
-        if self.ser is not None:
-            self.ser.close()
-
     def get_device_version(self) -> str:
         """
         Function to get the device version
@@ -91,20 +85,6 @@ class EpaperDevice:
         ver = self.ser.read_until(expected=b'\n')
         # ver = ver.decode('utf-8').strip('\n')
         return ver
-
-    def get_device_maximum_frames(self) -> int:
-        self.send_command(self.COMMAND_GET_NUMBER_OF_MAX_FRAMES)
-        num_f = self.ser.read_until(expected=b'\n')
-        num_f = int(num_f[0])
-        return num_f
-
-    def set_device_maximum_frames(self, max_frame: int):
-        self.send_command(self.COMMAND_SET_NUMBER_OF_MAX_FRAMES + [max_frame])
-        ret = self.ser.read(size=2)
-        if len(ret) == 0:
-            raise EpaperGenericError()
-        if ret[0] != 0xFE:
-            raise EpaperGenericError()
 
     def get_frame(self, frame_number: int) -> list:
         """
@@ -160,8 +140,8 @@ class EpaperDevice:
         self.log.debug('Got %s for CRC' % list(ret))
         # TODO: Add check if CRC isn't 4 bytes long
         ret = self.bytes_to_int32(ret[0:4])
-        self.log.debug('Got %s back from write section number %s. Should be %s' % (ret, section, crc32_func((bytes(data)))))
         if crc32_func(bytes(data)) != ret:
+            self.log.debug('Got %s back from write section number %s. Should be %s' % (ret, section, crc32_func((bytes(data)))))
             raise EpaperGenericError()
 
     def write_frame(self, frame_number: int, data: list):
@@ -173,7 +153,7 @@ class EpaperDevice:
         """
         if len(data) != self.SECTION_SIZE*self.NUMB_OF_SECTION_PER_FRAME:
             raise EpaperGenericError('Wrong input size (expected %s, gave %s)' % (self.SECTION_SIZE*self.NUMB_OF_SECTION_PER_FRAME, len(data)))
-        for s in range(0, self.NUMB_OF_SECTION_PER_FRAME):
+        for s in range(self.NUMB_OF_SECTION_PER_FRAME-1):
             self.write_frame_section(frame_number, s, [d for d in data[(s*self.SECTION_SIZE):((s+1)*self.SECTION_SIZE)]])
 
     def send_command(self, command: typing.Union[bytes, list]):
