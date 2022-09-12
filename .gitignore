@@ -6,8 +6,10 @@
 *.zip
 *-bak
 */fp-info-cache
-
+# STM32CubeIDE Stuff
 STM32CubeIDE/*/Debug
 .settings
 .metadata
 *.launch
+# FreeCAD Stuff
+*.FCStd1

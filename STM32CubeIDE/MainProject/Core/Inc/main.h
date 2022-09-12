@@ -52,12 +52,14 @@ extern uint8_t current_frame;
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+typedef struct{
+	uint8_t numb_of_frames;
+}UserSettings_t;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+extern UserSettings_t user_settings;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -70,6 +72,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void display_frame_number(uint8_t frame_number);
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

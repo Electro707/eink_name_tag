@@ -28,11 +28,19 @@
 #define DISPLAY_ON POWER_SWITCH_GPIO_Port->ODR &= ~(POWER_SWITCH_Pin)
 #define DISPLAY_OFF POWER_SWITCH_GPIO_Port->ODR |= (POWER_SWITCH_Pin)
 
+// The section size is really dependent on USB CDC's write capabilities which is best done
+// 64 bytes at a time
 #define SECTION_SIZE 64
+// The numbmer of "sections" to make up a single frame, in this case (64*44) = 22528 bits.
+// The display has 212*104=22048 bits
 #define SECTION_PER_FRAME 44
+#define BYTES_PER_FRAME SECTION_SIZE * SECTION_PER_FRAME
+// A section from the start of the EEPROM reserved for user settings.
+// This should be a multiple of 32 due to the EEPROM's page write size
+#define EEPROM_USER_SETTING_SIZE 32
 
 uint8_t current_frame = 0;
-uint8_t display_buffer[SECTION_SIZE*SECTION_PER_FRAME];
+uint8_t display_buffer[BYTES_PER_FRAME];
 uint8_t version_string[] = "Epaper Rev C\n";
 
 
@@ -50,7 +58,9 @@ void handle_usb_extra_data(void);
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+UserSettings_t user_settings = {
+	.numb_of_frames = 3,
+};
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -90,7 +100,6 @@ static void MX_SPI1_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -116,6 +125,7 @@ int main(void)
   MX_SPI1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+//  get_setting_from_ee();
   DISPLAY_ON;
   LL_SPI_Enable(SPI1);
   Paper_Init();
@@ -481,8 +491,29 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+/**
+ * Function that gets settings stored in EEPROM, such as the nummber of
+ */
+void get_setting_from_ee(){
+	uint8_t ee_user_data[EEPROM_USER_SETTING_SIZE];
+	ee24fc64_multi_read_read(ee_user_data, EEPROM_USER_SETTING_SIZE, 0);
+	user_settings.numb_of_frames = ee_user_data[0];
+}
+
+void store_settings_to_ee(){
+	uint8_t ee_user_data[EEPROM_USER_SETTING_SIZE];
+	memset(ee_user_data, 0, EEPROM_USER_SETTING_SIZE);	// Making sure the user data written starts out empty
+	ee_user_data[0] = user_settings.numb_of_frames;
+
+	uint16_t start_address = 0;
+	for(int i=0;i<EEPROM_USER_SETTING_SIZE/32;i++){
+		ee24fc64_multi_write(&UserRxBufferFS[(32*i)], 32, start_address);
+		start_address += 32;
+	}
+}
+
 void display_frame_number(uint8_t frame_number){
-	uint16_t start_address = frame_number*2816;
+	uint16_t start_address = frame_number*BYTES_PER_FRAME + EEPROM_USER_SETTING_SIZE;
 	for(int i=0;i<SECTION_PER_FRAME;i++){
 		ee24fc64_multi_read_read(&display_buffer[i*SECTION_SIZE], SECTION_SIZE, start_address);
 		start_address += SECTION_SIZE;
@@ -508,14 +539,13 @@ void handle_usb_packet(){
 	else if(UserRxBufferFS[0] == 0x03){
 		frame = UserRxBufferFS[1];
 		section = UserRxBufferFS[2];
-		start_address = (frame*2816) + (section*SECTION_SIZE);
+		start_address = (frame*BYTES_PER_FRAME) + (section*SECTION_SIZE) + EEPROM_USER_SETTING_SIZE;
 		memset(&UserTxBufferFS[0], 0, SECTION_SIZE);
 		ee24fc64_multi_read_read(&UserTxBufferFS[0], SECTION_SIZE, start_address);
 		CDC_Transmit_FS(UserTxBufferFS, SECTION_SIZE);
 	} else if(UserRxBufferFS[0] == 'v'){
 		CDC_Transmit_FS(version_string, sizeof(version_string)-1);
-	}
-	else if(UserRxBufferFS[0] == 0x20){
+	} else if(UserRxBufferFS[0] == 0x20){
 		ee_write_frame = UserRxBufferFS[1];
 		handle_loop_extra_stuff = 2;
 	}
@@ -525,7 +555,7 @@ void handle_usb_extra_data(){
 	uint32_t crc; uint16_t start_address;
 	if(usb_asking_for == 1){
 		LL_CRC_SetInitialData(CRC, 0);
-		start_address = (ee_write_frame*2816) + (ee_write_section*SECTION_SIZE);
+		start_address = (ee_write_frame*BYTES_PER_FRAME) + (ee_write_section*SECTION_SIZE) + EEPROM_USER_SETTING_SIZE;
 		for(int i=0;i<SECTION_SIZE/32;i++){
 			ee24fc64_multi_write(&UserRxBufferFS[(32*i)], 32, start_address);
 			for(int f=0;f<32;f++){LL_CRC_FeedData8(CRC, UserRxBufferFS[(32*i)+f]);}
@@ -539,6 +569,7 @@ void handle_usb_extra_data(){
 	usb_asking_for = 0;
 	usb_asking_numb_data = 0;
 }
+
 /* USER CODE END 4 */
 
 /**
