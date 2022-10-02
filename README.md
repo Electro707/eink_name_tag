@@ -3,6 +3,7 @@
 This project is for a E-Ink name-tag, meant to be the cooler replacement for a paper name-tag for event and shows.
 
 ![image](.misc/20201116_014953.jpg)
+![image](.misc/DSC05924.jpg)
 
 ## Directory
 
